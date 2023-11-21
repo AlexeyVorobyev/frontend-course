@@ -14,28 +14,28 @@ export const routesList: IRoute[] = [
     {path: '/', name: 'Статистика', component: null},
 
     {
-        path: `customization/universities`,
-        name: 'Учебные заведения',
-        component: <Navigate to={`/customization/universities/${EPageType.table}`}/>
+        path: `customization/graphs`,
+        name: 'Графы',
+        component: <Navigate to={`/customization/graphs/${EPageType.table}`}/>
     },
     {
-        path: `customization/universities/${EPageType.table}`,
-        name: 'Таблица учебных заведений',
+        path: `customization/graphs/${EPageType.table}`,
+        name: 'Таблица графов',
         component: <CustomizationPage/>
     },
     {
-        path: `customization/universities/${EPageType.view}`,
-        name: 'Учебное заведение',
+        path: `customization/graphs/${EPageType.view}`,
+        name: 'Граф',
         component: <CustomizationPage/>
     },
     {
-        path: `customization/universities/${EPageType.edit}`,
-        name: 'Настройка учебного заведения',
+        path: `customization/graphs/${EPageType.edit}`,
+        name: 'Настройка графа',
         component: <CustomizationPage/>
     },
     {
-        path: `customization/universities/${EPageType.add}`,
-        name: 'Добавление учебного заведения',
+        path: `customization/graphs/${EPageType.add}`,
+        name: 'Добавление графа',
         component: <CustomizationPage/>
     },
 ]

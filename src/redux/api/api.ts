@@ -1,12 +1,12 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IUniversitiesPayload} from "./types/universities";
+import {IGraphsPayload} from "./types/graphs";
 
 const disabledAuthTokenEndpoints = [
     'auth',
 ]
 export const api = createApi({
     reducerPath: 'api',
-    tagTypes: ['universities', 'towns', 'users','specialities'],
+    tagTypes: ['graphs'],
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_APP_API_HOST,
         prepareHeaders: (headers, api) => {
@@ -20,11 +20,13 @@ export const api = createApi({
     endpoints: () => ({})
 })
 
-export const constructQueryString = (config: IUniversitiesPayload): string => {
+type TConstructQueryStringConfig = IGraphsPayload
+
+export const constructQueryString = (config: TConstructQueryStringConfig): string => {
     let resString = '?'
 
     for (const key of Object.keys(config)) {
-        resString += `${key}=${config[key as keyof IUniversitiesPayload]}&`
+        resString += `${key}=${config[key as keyof TConstructQueryStringConfig]}&`
     }
 
     console.log('DEBUG QUERYPARAMS', resString)

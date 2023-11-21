@@ -1,6 +1,6 @@
-import {ESort} from "../../../redux/api/types/universities";
+import {ESort} from "../../../redux/api/types/graphs";
 
-export const varsBehaviourMapUniversities = (initialVars: any) => {
+export const varsBehaviourMapGraphs = (initialVars: any) => {
 
     console.log('DEBUG INITIAL_VARS', initialVars)
     let resSort: string = ""
@@ -19,10 +19,9 @@ export const varsBehaviourMapUniversities = (initialVars: any) => {
 
     const mutatedVars = {
         ...(initialVars.page && {page: Number(initialVars.page)}),
-        ...(initialVars.perPage && {size: Number(initialVars.perPage)}),
+        ...(initialVars.perPage && {perPage: Number(initialVars.perPage)}),
         ...(initialVars.sort && {sort: resSort}),
         ...(initialVars.simpleFilter && {titleFilter: initialVars.simpleFilter}),
-        ...(initialVars.universityGrade && {gradeFilter: initialVars.universityGrade})
     }
 
     console.log('DEBUG MUTATED_VARS', mutatedVars)

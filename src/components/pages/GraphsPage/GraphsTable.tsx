@@ -1,39 +1,39 @@
 import {FC, useEffect} from "react";
 import {AlexDataTable} from "../../AlexDataTable/AlexDataTable";
-import {UniversitiesTableColumns} from "./columns";
-import {useLazyUniversitiesQuery, useUniversityDeleteMutation} from "../../../redux/api/universities.api";
+import {GraphsTableColumns} from "./columns";
+import {useGraphDeleteMutation, useLazyGraphsQuery} from "../../../redux/api/graphs.api";
 import {usePageState} from "../../functions/usePageState";
-import {varsBehaviourMapUniversities} from "./varsBehaviourMapUniversities";
+import {varsBehaviourMapGraphs} from "./varsBehaviourMapGraphs";
 import {EPageType} from "../СustomizationPage/СustomizationPage";
 import {useLocation} from "react-router-dom";
 
-export const UniversitiesTable: FC = () => {
-    const [lazyUniversitiesQuery, result] = useLazyUniversitiesQuery()
-    const [deleteUniversity] = useUniversityDeleteMutation()
+export const GraphsTable: FC = () => {
+    const [lazyGraphsQuery, result] = useLazyGraphsQuery()
+    const [deleteGraph] = useGraphDeleteMutation()
 
     const {
         variables,
         serverSideOptions,
         setServerSideOptions
     } = usePageState({
-        varsBehaviorMap: varsBehaviourMapUniversities,
+        varsBehaviorMap: varsBehaviourMapGraphs,
     })
 
     useEffect(() => {
-        variables && lazyUniversitiesQuery(variables)
+        variables && lazyGraphsQuery(variables)
     }, [variables])
 
     const location = useLocation()
 
     return (
-        <AlexDataTable columns={UniversitiesTableColumns}
-                       data={result?.currentData?.content}
+        <AlexDataTable columns={GraphsTableColumns}
+                       data={result?.currentData?.data}
                        availablePages={result?.currentData?.totalPages}
                        perPageOptions={['1', '2', '4', '8', '16', '32']}
                        availableElements={result?.currentData?.totalElements}
                        columnsSelect simpleFilter footer
                        filterListIds={[
-                           'universityGrade',
+
                        ]}
                        serverSideOptions={serverSideOptions}
                        setServerSideOptions={setServerSideOptions}
@@ -54,7 +54,7 @@ export const UniversitiesTable: FC = () => {
                            },
                            delete: {
                                columnName: 'id',
-                               mutation: deleteUniversity,
+                               mutation: deleteGraph,
                                showModal: true
                            }
                        }}/>

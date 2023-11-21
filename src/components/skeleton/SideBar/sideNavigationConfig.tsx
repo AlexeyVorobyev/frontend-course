@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import SettingsIcon from '@mui/icons-material/Settings';
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import {EPageType} from "../../pages/СustomizationPage/СustomizationPage";
 
 export interface ISideNavigationConfig {
@@ -16,13 +16,8 @@ export const sideNavigationConfig: ISideNavigationConfig[] = [
     {path: '/', name: 'Статистика', icon: <QueryStatsIcon/>},
 
     {
-        path: null, name: 'Настройки', icon: <SettingsIcon/>,
-        routes: [
-            {
-                path: `customization/universities/${EPageType.table}`,
-                name: 'Учебные заведения',
-                icon: <SchoolOutlinedIcon/>
-            },
-        ]
+        path: `customization/graphs/${EPageType.table}`,
+        name: 'Графы',
+        icon: <TimelineIcon/>
     },
 ]

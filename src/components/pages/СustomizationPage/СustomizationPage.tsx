@@ -5,11 +5,11 @@ import {theme} from "../../Theme/theme";
 import {LinkRouterWrapper} from "../../LinkRouterWrapper/LinkRouterWrapper";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import {AlexDialogButton} from "../../AlexDialog/AlexDialogButton";
-import {useUniversityDeleteMutation} from "../../../redux/api/universities.api";
+import {useGraphDeleteMutation} from "../../../redux/api/graphs.api";
 import {FormProvider, useForm} from "react-hook-form";
-import {UniversitiesTable} from "../UniversitiesPage/UniversitiesTable";
-import {UniversitiesCard} from "../UniversitiesPage/UniversitiesCard";
-import {UniversitiesForm} from "../UniversitiesPage/UniversitiesForm";
+import {GraphsTable} from "../GraphsPage/GraphsTable";
+import {GraphsCard} from "../GraphsPage/GraphsCard";
+import {GraphsForm} from "../GraphsPage/GraphsForm";
 
 export enum EPageType {
     edit = 'edit',
@@ -27,12 +27,12 @@ export const CustomizationPage: FC = () => {
     const [searchParams] = useSearchParams()
 
     const navigate = useNavigate()
-    const [deleteUniversity] = useUniversityDeleteMutation()
+    const [deleteGraph] = useGraphDeleteMutation()
     const customizationWrapperPageNameMap = useMemo(() => new Map([
-        ['universities',
+        ['graphs',
             {
                 deleteQuery: (id: string) => {
-                    deleteUniversity({id: id})
+                    deleteGraph({id: id})
                         .then(() => {
                             if (searchParams.get('from')) {
                                 navigate(JSON.parse(searchParams.get('from')!))
@@ -42,21 +42,21 @@ export const CustomizationPage: FC = () => {
                         })
                 },
                 [EPageType.table]: {
-                    component: <UniversitiesTable/>,
-                    title: 'учебных заведений',
-                    button: 'новое учебное заведение'
+                    component: <GraphsTable/>,
+                    title: 'графов',
+                    button: 'новый граф'
                 },
                 [EPageType.view]: {
-                    component: <UniversitiesCard/>,
-                    button: 'учебное заведение'
+                    component: <GraphsCard/>,
+                    button: 'граф'
                 },
                 [EPageType.add]: {
-                    component: UniversitiesForm,
-                    title: 'учебного заведения'
+                    component: GraphsForm,
+                    title: 'графа'
                 },
                 [EPageType.edit]: {
-                    component: UniversitiesForm,
-                    title: 'учебного заведения'
+                    component: GraphsForm,
+                    title: 'графа'
                 },
             }
         ],
