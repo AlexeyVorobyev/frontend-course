@@ -1,3 +1,5 @@
+import {IGraphData} from "../../../components/AlexReactFlowGraph/AlexReactFlowUncontrolled";
+
 export enum ESort {
     ascending = 'ASC',
     descending = 'DESC'
@@ -17,10 +19,10 @@ export interface IGraphEntity {
     name: string
     creationDate:string
     updateDate:string
-    graphData: Object
+    graphData: IGraphData
 }
 
 export interface IGraphPostPutPayload {
     name?: string
-    graphData?: Object
+    graphData?: IGraphData
 }

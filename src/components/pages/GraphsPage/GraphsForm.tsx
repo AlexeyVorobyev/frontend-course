@@ -1,5 +1,5 @@
 import React, {FC, useLayoutEffect} from "react";
-import {Box, CircularProgress, Grid} from "@mui/material";
+import {Box, CircularProgress, Grid, Paper, Stack} from "@mui/material";
 import {useFormContext} from "react-hook-form";
 import {theme} from "../../Theme/theme";
 import {AlexInput} from "../../formUtils/AlexInput/AlexInput";
@@ -7,6 +7,7 @@ import {useGraphPatchMutation, useGraphPostMutation, useLazyGraphQuery} from "..
 import {IGraphPostPutPayload} from "../../../redux/api/types/graphs";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {extractIds} from "../../functions/extractIds";
+import {AlexReactFlowControlled} from "../../AlexReactFlowGraph/AlexReactFlowControlled";
 
 interface IProps {
     setOnSubmitFunc: React.Dispatch<React.SetStateAction<{ callback: ((data: any) => void) | null }>>
@@ -57,7 +58,6 @@ export const GraphsForm: FC<IProps> = ({
 
     const add = (data: IGraphPostPutPayload) => {
         DEBUG && console.log('data ADD', data)
-        data.graphData = {}
         addGraph({body: data})
             .then((response) => {
                 console.log('promise response', response)
@@ -104,15 +104,26 @@ export const GraphsForm: FC<IProps> = ({
         {(!edit || result.data) && (<Box sx={{
             width: '100%',
             padding: theme.spacing(2),
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            height:'100%'
         }}>
-            <Grid container spacing={theme.spacing(2)}>
-                <Grid item xs={6}>
-                    <AlexInput name={'name'} label={'Название'}
-                               error={Boolean(errors.title)} required
-                               errorText={errors.title?.message as string | undefined}/>
+            <Stack direction={'column'} height={'100%'} rowGap={theme.spacing(2)}>
+                <Grid container spacing={theme.spacing(2)}>
+                    <Grid item xs={6} lg={4}>
+                        <AlexInput name={'name'} label={'Название'}
+                                   error={Boolean(errors.title)} required
+                                   errorText={errors.title?.message as string | undefined}/>
+                    </Grid>
                 </Grid>
-            </Grid>
+                <Paper elevation={3} sx={{
+                    width:'100%',
+                    height:0,
+                    display:'flex',
+                    flex:1,
+                }}>
+                    <AlexReactFlowControlled name={'graphData'}/>
+                </Paper>
+            </Stack>
         </Box>)}
     </Box>)
 }

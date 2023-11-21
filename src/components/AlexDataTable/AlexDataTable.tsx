@@ -138,7 +138,8 @@ export const AlexDataTable: FC<IProps> = ({
                 <AlexDataTableHeader simpleFilter={simpleFilter} columnsSelect={columnsSelect}
                                      columnsState={columnsState} setColumnsState={setColumnsState}
                                      filterListIds={filterListIds} setServerSideOptions={setServerSideOptions}
-                                     serverSideOptions={serverSideOptions} downloadCSV={downloadCSV} data={data} columns={columns}/>}
+                                     serverSideOptions={serverSideOptions} downloadCSV={downloadCSV} data={data}
+                                     columns={columns}/>}
             {!rows && (<Box sx={{
                 width: '100%',
                 height: '100%',
