@@ -20,7 +20,7 @@ export const SkeletonWrapper:FC<IProps> = ({children}) => {
                 boxShadow: 2
             }}>
                 <Stack alignItems={'center'} direction={'row'} height={'100%'}>
-                    <Typography variant={'h3'} color={theme.palette.primary.contrastText}>ALEX GRAPHS</Typography>
+                    <Typography variant={'h3'} color={theme.palette.primary.contrastText}>GRAPH VISUALIZATION SYSTEM</Typography>
                 </Stack>
             </Box>
             <Stack height={'calc(100vh - 70px)'} width={'100%'} direction={'row'}>

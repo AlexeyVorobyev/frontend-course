@@ -55,7 +55,7 @@ export const CustomBreadCrumbs: FC = () => {
                 key={'/'}>
                 <Typography variant={'subtitle2'}
                             color={checkLocation(location.pathname, '/') ? theme.palette.secondary.main : '#000000'}
-                            height={'24px'}>ALEX GRAPHS</Typography>
+                            height={'24px'}>GRAPH VISUALIZATION SYSTEM</Typography>
             </LinkRouterWrapper>
             {constructBreadCrumbs()}
         </Breadcrumbs>
