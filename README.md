@@ -23,7 +23,7 @@ git clone https://github.com/AlexeyVorobyev/frontend-course.git
 yarn
 ```
 
-Далее необходимо подключить Front-End к Back-End. Создаёте в корневой папке проекта файл .env и введите корректны адрес Back-End.
+Далее необходимо подключить Front-End к Back-End. Создаёте в корневой папке проекта файл .env и введите корректный адрес Back-End.
 
 ```env
 VITE_APP_API_HOST=http://адрес:порт/
