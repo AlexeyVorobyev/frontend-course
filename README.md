@@ -1,6 +1,10 @@
 # Graphs visualization system
 
-В данном репозитории представлена Freont-End часть курсовой.
+В данном репозитории представлена Front-End часть курсовой.
+
+## Установка Back-End части сервиса
+
+Подробно этот пункт расписан по ссылке: https://github.com/AlexeyVorobyev/backend-course.
 
 ## Клонирование репозитория
 
@@ -17,7 +21,16 @@ git clone https://github.com/AlexeyVorobyev/frontend-course.git
 ```bash
 # Установка node_modules
 yarn
+```
 
+Далее необходимо подключить Front-End к Back-End. Создаёте в корневой папке проекта файл .env и введите корректны адрес Back-End.
+
+```env
+VITE_APP_API_HOST=http://адрес:порт/
+```
+Убедившись в корректном адресе Back-End запустите программу.
+
+```bash
 # Запуск программы
 yarn run dev
 ```
